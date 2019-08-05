@@ -4,6 +4,8 @@ import CustomCRMComponent from "./CustomCRMComponent";
 
 import * as OwlAirTheme from "./brand/OwlAirSignal";
 
+import BrandIcon from "./brand/BrandIcon";
+
 const PLUGIN_NAME = "ClientContextPlugin";
 
 export default class ClientContextPlugin extends FlexPlugin {
@@ -49,17 +51,24 @@ export default class ClientContextPlugin extends FlexPlugin {
             alignItems: "center",
             alignSelf: "center",
             justifyContent: "center",
-            width: "12px",
-            height: "40px",
-            transform: "skew(-20deg)",
+            width: "30px",
+            height: "30px",
+            borderRadius: "30px",
+            marginLeft: "4px",
+            marginRight: "4px",
             background: colors.background,
             color: colors.color
           }}
-        />
+          >
+          <BrandIcon brand={brand} />
+        </div>
       );
     };
 
-    flex.TaskListButtons.Content.add(<LoyaltyBadge key="loyalty-badge" />);
+    flex.TaskListButtons.Content.add(<LoyaltyBadge key="loyalty-badge" />, {
+      sortOrder: -1,
+      if: props => props.task && props.task.attributes.tier
+    });
 
     flex.Actions.addListener("beforeAcceptTask", payload => {
       if (flex.TaskHelper.isCallTask(payload.task)) {

@@ -16,6 +16,11 @@
     "src": "https://rose-woodpecker-7849.twil.io/assets/plugin-signal.js"
   },
   {
+    "name": "OwlAirChannelsPlugin",
+    "version": "0.0.1",
+    "src": "https://plugin-owlair-channels.twlo-se-au.now.sh/plugin-owlair-channels.js"
+  },
+  {
     "name": "Flex Admin Plugin",
     "version": "1.17.1",
     "src": "https://assets.flex.twilio.com/twilio/flex-admin-plugin/1.17.1/flex-admin-plugin.js"

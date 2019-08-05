@@ -26,7 +26,7 @@ import PersonIcon from "@material-ui/icons/Person";
 // import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 // import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 
-import BrandIcon from "./brand/BrandIcon";
+import BrandHero from "./brand/BrandHero";
 
 function CustomCRMComponent(props) {
   let brand = props.brandName || "Owl";
@@ -299,7 +299,23 @@ function CustomCRMComponent(props) {
   
   const theme = props.theme;
   const muiTheme = createMuiTheme({
-    palette: { type: theme.calculated.lightTheme ? "dark" : "light"}
+    palette: {
+      type: theme.calculated.lightTheme ? "dark" : "light",
+      primary: {
+        main: "#50508B",
+        dark: "#50508B",
+        contrastText: "#ff0"
+      },
+      secondary: {
+        main: '#0044ff',
+        dark: '#0044ff',
+        // dark: will be calculated from palette.secondary.main,
+        contrastText: '#f00',
+      },
+    },
+    typography: {
+      fontFamily: "Open Sans"
+    }
   })
 
   return (
@@ -309,17 +325,6 @@ function CustomCRMComponent(props) {
       style={{ padding: "1rem", display: "flex", flexDirection: "column", height: "100vh" }}
     >
       <br />
-      <h1
-        style={{
-          color: "white",
-          fontWeight: "normal",
-          letterSpacing: "2px",
-          fontSize: "1.5rem",
-          textAlign: "center"
-        }}
-      >
-        Welcome to {brand} Contact Centre
-      </h1>
       {props.productArea === "noTask" && (
         <div
           style={{
@@ -327,11 +332,24 @@ function CustomCRMComponent(props) {
             alignItems: "center",
             justifyContent: "center",
             height: "100%",
-            width: "100%"
+            width: "100%",
+            flexDirection: "column"
           }}
         >
-          <div style={{ color: "white", opacity: "0.25", width: "60%" }}>
-            <BrandIcon brand={brand} />
+          <h1
+            class="Twilio"
+            style={{
+              color: "white",
+              fontWeight: "normal",
+              letterSpacing: "2px",
+              fontSize: "1.5rem",
+              textAlign: "center"
+            }}
+          >
+            Welcome to {brand}
+          </h1>
+          <div style={{ color: "white", opacity: "0.25", width: "30%" }}>
+            <BrandHero brand={brand} />
           </div>
         </div>
       )}
